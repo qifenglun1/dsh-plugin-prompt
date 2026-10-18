@@ -1,0 +1,61 @@
+{
+  "name": "dsh-plugin-prompt",
+  "version": "1.0.0",
+  "description": "A sidebar prompt template library for DeepSeek Harness: browse, manage, and insert reusable prompts into the composer.",
+  "license": "MIT",
+  "author": "qifenglun1",
+  "homepage": "https://github.com/qifenglun1/dsh-plugin-prompt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qifenglun1/dsh-plugin-prompt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qifenglun1/dsh-plugin-prompt/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "prompt-library",
+    "prompt-templates",
+    "sidebar"
+  ],
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check index.js && node --check client.js"
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  }
+}
